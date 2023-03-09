@@ -3,7 +3,7 @@ import {createBrowserRouter,RouterProvider ,BrowserRouter as Router,Routes,Route
 import Favourite from './Pages/Favourite'
 import VerifyAccount from './Pages/VerifyAccount'
 import Home from './Pages/Home'
-import Login from './Pages/login'
+import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Search from './Pages/Search'
 import Dashboard from './Pages/Dashboard'
