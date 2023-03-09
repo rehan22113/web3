@@ -18,7 +18,7 @@ const Home = () => {
       <div className="app_main pt-16 xl:pt-36">
         <div className="container lg:w-[60%] m-auto">
           <div className="items-center text-center">
-            <h1 className="text-[28px] md:text-[50px] font-[700]">The multichain vision for
+            <h1 className="text-[28px] md:text-[45px] font-[700]">The multichain vision for
               <br />
               <span>Web3
               </span>starts here</h1>
