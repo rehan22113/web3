@@ -12,7 +12,7 @@ const Login = () => {
     <div className="container md:w-[80%] w-[95%] flex flex-col m-auto">
     <Navbar/>
     <div className='py-24'>
-        <div className="app_forms w-12/12 lg:w-2/5 lg:mx-auto m-15 py-20 px-4 sm:px-10 md:px-20 rounded-[30px] bg-[#e6007a]">
+        <div className="app_forms w-12/12 xl:w-2/5 lg:w-3/5 md:w-full lg:mx-auto m-15 py-20 px-4 sm:px-10 md:px-20 rounded-[30px] bg-[#e6007a]">
   <div className="text-center bg-[#e6007a]">
     <h2 className="text-[20px] md:text-[30px] font-[600] text-white">Login to your Account</h2>
     <form className="app_forms-form md:mt-[40px] text-[12px] md:text-[18px]">

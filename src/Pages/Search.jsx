@@ -5,13 +5,16 @@ import Navbar from '../Layout/Navbar'
 import { Link } from 'react-router-dom'
 import deleteMark from '../assets/deleteMark.svg'
 
-const CardData = {
-
-}
 
 const Search = () => {
     const [text,setText] = React.useState("");
-
+  const [type,setType] = React.useState("All")
+  const [active,setActive] = React.useState({
+    all:true,
+    image:false,
+    article:false,
+    video:false
+  })
     const Mic =()=>{
       navigator.mediaDevices
     .getUserMedia({ video: false, audio: true })
@@ -38,7 +41,7 @@ const Search = () => {
       <Link className="text-[#e6007a] absolute left-[2%] top-[15px] md:top-[16px] cursor-pointe text-[15px] md:text-[22px]">
       <svg xmlns="http://www.w3.org/2000/svg" fill='currentColor ' className='md:w-8 w-6' viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" /></svg>
       </Link>
-      <input value={text} onChange={(e)=>setText(e.target.value)} type="text" required className="w-10/12 border-2 rounded-[46px] h-[47px] md:h-[4rem] md:indent-[40px] indent-[20px] px-3 lg:indent-[50px] text-[15px] md:text-[20px]" defaultValue={""} />
+      <input value={text} onChange={(e)=>setText(e.target.value)} type="text" required className="w-10/12 border-2 rounded-[46px] h-[47px] md:h-[4rem] md:indent-[40px] indent-[20px] px-3 lg:indent-[50px] text-[15px] md:text-[20px]" />
       {text.length>0 &&
       <img onClick={()=>setText("")} className="absolute md:right-[24%] right-[5.5rem] top-[23%] md:top-[27%] w-[13px] md:w-[24px] cursor-pointer h-[30px] md:h-[32px] border-black" src={deleteMark} alt="Delete Search Text"  />
       }
@@ -50,10 +53,10 @@ const Search = () => {
     <span className="app_search-results_count text-[10px] md:text-[20px] md:ml-[30px] mt-[10px] font-[300]">about 0 results</span>
   </div>
   <ul className="app_search-filter_list flex justify-between items-start w-[320px] text-[12px] md:text-[25px] font-[500] pr-[79px]">
-    <li className="cursor-pointer md:px-10 active">All</li>
-    <li className="cursor-pointer md:px-10 ">Image</li>
-    <li className="cursor-pointer md:px-10 ">Videos</li>
-    <li className="cursor-pointer md:px-10 ">Articles</li>
+    <li onClick={(e)=>{setType("All");setActive({image: false,article: false,video: false,all:true})}} className={`cursor-pointer md:px-10 ${active.all?'active':''}`}>All</li>
+    <li onClick={(e)=>{setType("image");setActive({image: true,article: false,video: false,all:false})}} className={`cursor-pointer md:px-10 ${active.image?'active':''}`}>Image</li>
+    <li onClick={(e)=>{setType("Video");setActive({image: false,article: false,video: true,all:false})}} className={`cursor-pointer md:px-10 ${active.video?'active':''}`}>Videos</li>
+    <li onClick={(e)=>{setType("Article");setActive({image: false,article: true,video: false,all:false})}} className={`cursor-pointer md:px-10 ${active.article?'active':''}`}>Articles</li>
     <li className="cursor-pointer md:px-10 " />
   </ul>
   {/* <div>
@@ -121,9 +124,7 @@ const Search = () => {
     </div>
   </div> */}
   <div className=' relative z-10'>
-  <Card/>
-  <Card/>
-  <Card/>
+  <Card type={type} text={text}/>
     {/* <div className="mt-16 text-center text-slate-500 text-[25px]">No articles Found</div> */}
   </div>
   <div />

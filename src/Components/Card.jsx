@@ -1,12 +1,113 @@
 import React from 'react'
 import vector from '../assets/Vector.png'
-const Card = () => {
+import image from '../assets/bitcoin.png'
+const CardData = [
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"New upcomming event",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"Article"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"image",
+    image:"./assets/bitcoin.png"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"New upcomming event",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"image",
+    image:"./assets/bitcoin.png"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"image",
+    image:"./assets/bitcoin.png"
+  },
+  {
+    date:"01.11.23 07:19 pm",
+    title:"Bitcoin are going to 25.000$",
+    url:"https://twitter.com/tiber_h/status/1613254199772434432",
+    desc:"Today bitcoin is will go up.We analyse the cryptovolume market...",
+    type:"image",
+    image:"./assets/bitcoin.png"
+  },
+]
+
+const Card = ({type,text}) => {
+  const [filterData,setFilterData] = React.useState(CardData)
+
+  const filter=()=>{
+      const fdata = CardData.filter((e)=>{
+        if(e.type == type || type =="All")
+        return e.title.toLowerCase().includes(text)
+      })
+      setFilterData(fdata)
+  }
+  // const filterByType =()=>{
+  //   const tdata = filterData.filter((e)=>{
+  //     return e.type == type || type =="All"
+  //   })
+  //   setFilterData(tdata)
+  // }
+  React.useEffect(()=>{
+    filter()
+  },[text,type])
+  // React.useEffect(()=>{
+  //   filterByType()
+  // },[type])
     return (
         <>
+        {filterData.length>0 ? filterData.map((card,index)=>{
+          return <div key={index}>
   <div className="app_search_result mx-auto md:mx-0 flex md:pb-[25px] pl-[16px] pb-[15px] pt-[12px] pr-[22px] md:pr-[56px] justify-between rounded-[20px] md:rounded-[50px] relative z-[200] mt-[40px] md:mt-[90px] w-6/6 lg:w-9/12">
   <div className="md:pl-[80px] w-11/12 lg:w-9/12">
     <p className="app_search_result-time font-[300] leading-[12px] md:leading-[22px]">
-      <span className="text-[10px] md:text-[18px]">01.11.23 07:19 pm</span>
+      <span className="text-[10px] md:text-[18px]">{card.date}</span>
     </p>
     <div className="-mt-0 lg:-mt-4 flex items-center md:-ml-[65px]">
       <div className="mr-1 text-[13px] md:text-[25px]">
@@ -15,17 +116,17 @@ const Card = () => {
         </span>
       </div>
       <div className="text-[12px] md:text-[25px] my-2 text-ellipsis w-[30rem] whitespace-nowrap overflow-hidden md:pl-5 md:pt-2">
-      <span className="text-[12px] md:text-[30px] font_family">Bitcoin are going to 25.000$</span>
+      <span className="text-[12px] md:text-[30px] font_family">{card.title}</span>
       </div>
     </div>
     <div className='-py-10'>
 
     <h6 className="app_search_result-link w-64 -mt-5 text-ellipsis whitespace-nowrap overflow-hidden" title="https://twitter.com/tiber_h/status/1613254199772434432">
-      <a className="text-[10px] md:text-[16px] font-[200] w-full" href="https://twitter.com/tiber_h/status/1613254199772434432" target="_blank" rel="noreferrer">https://twitter.com/tiber_h/status/1613254199772434432</a>
+      <a className="text-[10px] md:text-[16px] font-[200] w-full" href={card.url} target="_blank" rel="noreferrer">{card.url}</a>
     </h6>
-    <p className="text-[10px] md:text-[16px] font-[300] break-all h-[60px] ">Today bitcoin is will go up.We analyse the 
-cryptovolume market.....</p>
+    <p className="text-[10px] md:text-[16px] font-[300] break-all h-[60px] ">{card.desc}</p>
     </div>
+    
     <ul className="bordered_icons flex col-span-2 text-center relative text-[15px] md:text-[25px] pt-[17px] md:pt-[33px] ">
       <li>
         <a href="https://www.polkadotspace.io/pages/search">
@@ -54,6 +155,12 @@ cryptovolume market.....</p>
       <p className="text-[5px] text-left md:text-[15px] absolute top-full w-52">0 clap(s)</p>
     </ul>
   </div>
+  <div className='app_search_result-images flex flex-col pt-[25px] md:pt-[30px] w-3/12 text-center'>
+    {card.hasOwnProperty("image") &&
+  <div className='app_search_result-images_img'>
+      <img className='rounded-[16px] ml-auto w-full h-full md:w-[328px]' src={image}/>
+    </div>
+    }
   <ul className="app_search_result-social_icon flex flex-col text-center lg:flex-row justify-around text-[25px] mt-[29px] px-5">
     <li className="mr-[5px] md:mr-[20px] lg:mr-[43px] text-[15px] md:text-[20px] mb-[15px]">
       <a href="/">
@@ -87,8 +194,16 @@ cryptovolume market.....</p>
       </a>
     </li>
   </ul>
+  </div>
+
 </div>
 
+          </div>
+        }) : (
+          <>
+            <h1 className='text-slate-300 text-lg text-center py-24'>No result found</h1>
+          </>
+        )}
         </>
     )
 }
